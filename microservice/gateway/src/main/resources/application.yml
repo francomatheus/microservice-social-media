@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: create_account
+          uri: http://localhost:8081
+          predicates:
+            - Path=/account/v1/create
+            - Method=POST
+
+  config:
+    import: optional:configserver:http://localhost:8888
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,prometheus"
+
+opentracing:
+  jaeger:
+    udp-sender:
+      host: localhost
+      port: 6831
+    log-spans: true

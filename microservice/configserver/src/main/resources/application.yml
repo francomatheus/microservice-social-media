@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: configserver
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/francomatheus/microservice-social-media
+server:
+  port: 9000
+
+management:
+  server:
+    port: 8888
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus
+
+opentracing:
+    jaeger:
+      udp-sender:
+        host: localhost
+        port: 6831
+      log-spans: true

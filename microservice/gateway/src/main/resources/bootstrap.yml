@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    config:
+      enabled: false
+      uri: http://myconfigserver.com
+      fail-fast=true: true
+      label: main
+      name: gateway
